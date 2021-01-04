@@ -1,44 +1,48 @@
 import React, { useContext, useReducer } from 'react';
 import { v4 } from 'uuid';
 import { cloneDeep } from 'lodash';
-import { DragBox, DragColumn, DragType } from '../../interfaces/Drag';
+import { DragBox, DragType } from '../../interfaces/Drag';
 
-export interface AssisterState {
-    column: DragColumn | undefined,
-    box: DragBox | undefined,
-    columns: Array<DragColumn>,
-}
-
-interface AssisterStateContextProps {
-    state: {},
-    dispatch: React.Dispatch<any>
-}
-
-type Action = {
-    type: 'ADD_COLUMN' | 'SET_TARGET_BOX' | 'SET_TARGET_COLUMN' | 'SET_BOX_TO_COLUMN',
-    payload: DragColumn | DragBox,
-}
+import {
+    AssisterState,
+    AssisterStateContextProps,
+    AssisterAction,
+    AssisterActionType
+} from '../../interfaces/Assister';
 
 const AssisterStateContext = React.createContext<AssisterStateContextProps>({} as AssisterStateContextProps);
 
-const AssisterStateReducer = (state: AssisterState, action: Action): AssisterState => {
+const AssisterStateReducer = (state: AssisterState, action: AssisterAction): AssisterState => {
     const { type, payload } = action;
 
     switch (type) {
-        case 'ADD_COLUMN': {
+        case AssisterActionType.ADD_COLUMN: {
             return state;
         }
-        case 'SET_TARGET_BOX': {
+        case AssisterActionType.ADD_BOX: {
+            const _state = cloneDeep(state);
+            const { columns } = _state;
+            const { column_id } = payload as DragBox;
+            const target = columns.find(target => (target.id === column_id));
+
+            if (target) {
+                // @ts-ignore
+                target.boxes = [].concat(target.boxes, payload);
+            }
+
+            return _state;
+        }
+        case AssisterActionType.SET_TARGET_BOX: {
             return Object.assign({}, state, {
                 box: payload
             });
         }
-        case 'SET_TARGET_COLUMN': {
+        case AssisterActionType.SET_TARGET_COLUMN: {
             return Object.assign({}, state, {
                 column: payload
             });
         }
-        case 'SET_BOX_TO_COLUMN': {
+        case AssisterActionType.SET_BOX_TO_COLUMN: {
             // TODO: 对象引用的问题
             const _state = cloneDeep(state);
             const { columns, column, box } = _state;
@@ -67,40 +71,21 @@ const AssisterStateReducer = (state: AssisterState, action: Action): AssisterSta
     }
 }
 
-const TestID = v4()
-const TargetId = v4()
-
 const InitialState: AssisterState = {
     column: undefined,
     box: undefined,
     columns: [
         {
             type: DragType.COLUMN,
-            id: TargetId,
+            id: v4(),
             name: '调研',
             boxes: [],
         },
         {
             type: DragType.COLUMN,
-            id: TestID,
+            id: v4(),
             name: '规划',
             boxes: [
-                {
-                    type: DragType.BOX,
-                    column_id: TestID,
-                    id: v4(),
-                    name: 'This is Box !!!',
-                    content: '',
-                    timestamp: Date.now()
-                },
-                {
-                    type: DragType.BOX,
-                    column_id: TestID,
-                    id: v4(),
-                    name: 'This is Box !!!',
-                    content: '',
-                    timestamp: Date.now()
-                }
             ],
         },
         {

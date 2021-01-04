@@ -62,7 +62,6 @@ export const Box: React.FC<BoxProps> = ({ box, children }) => {
             isDragging: monitor.isDragging(),
         }),
         end: () => {
-            console.warn("================");
             dispatch({
                 type: 'SET_BOX_TO_COLUMN',
             });
