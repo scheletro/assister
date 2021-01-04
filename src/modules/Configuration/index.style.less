@@ -1,0 +1,35 @@
+.configuration {
+    position: fixed;
+    right: 4em;
+    bottom: 1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    box-shadow: 0 10px 10px rgba(27, 31, 35, 0.1) !important;
+}
+
+.configuration-module-container {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 33.33% 33.33% 33.33%;
+
+    width: 10em;
+    height: 10em;
+
+    .configuration-module-icon-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .rs-btn-icon {
+            background: transparent;
+        }
+    }
+}
