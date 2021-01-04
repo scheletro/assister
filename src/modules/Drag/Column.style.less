@@ -1,0 +1,49 @@
+.drag-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 10px;
+
+    width: 375px;
+    height: 100%;
+
+    background: #eff1f3;
+
+    border-width: 1px !important;
+    border-color: #dde0e5;
+    border-style: solid;
+    border-radius: 4px;
+
+    & + & {
+        margin-left: 4px;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+
+        margin-bottom: 1em;
+
+        .icon-group {
+            display: flex;
+            align-items: center;
+
+            i + i {
+                margin-left: 8px;
+            }
+        }
+    }
+
+    &-list {
+        width: 100%;
+    }
+
+    .drag-box + .drag-box {
+        margin-top: 1em;
+    }
+}
