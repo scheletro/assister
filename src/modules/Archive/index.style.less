@@ -1,0 +1,48 @@
+@archive-controller-color: #b2b2b2;
+
+.archive {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .archive-controller {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        width: 24px;
+        height: 40px;
+
+        background: @archive-controller-color;
+
+        i {
+            font-size: 1.25em;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 16px;
+            width: 16px;
+            border-left: 24px solid transparent;
+            right: 0;
+        }
+
+        &::before {
+            border-top: 16px solid @archive-controller-color;
+            bottom: -16px;
+        }
+
+        &::after {
+            border-bottom: 16px solid @archive-controller-color;
+            top: -16px;
+        }
+    }
+}

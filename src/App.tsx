@@ -6,7 +6,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { AssisterStateProvider } from './contexts/Assister';
 
 
-import { Drag, Configuration } from './modules';
+import { Drag, Archive, Configuration } from './modules';
 
 import './App.style.less';
 
@@ -18,6 +18,7 @@ function App() {
       <AssisterStateProvider>
         <div className="App">
           <Container />
+          <Archive />
           <Configuration />
         </div>
       </AssisterStateProvider>

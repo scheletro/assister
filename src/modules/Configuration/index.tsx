@@ -43,7 +43,7 @@ const Configuration: React.FC<ConfigurationProps> = ({ }) => {
             </Tooltip>
         }>
             <div className="configuration">
-                <IconButton icon={<Icon icon="cube" />} />
+                <IconButton icon={<Icon icon="cube" />} circle size="lg" />
             </div>
         </Whisper>
     )
