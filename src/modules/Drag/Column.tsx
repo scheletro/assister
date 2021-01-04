@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { Icon } from 'rsuite';
 
 import { useDrag, useDrop, XYCoord } from 'react-dnd';
 
@@ -18,17 +17,18 @@ export interface ColumnProps {
 }
 
 export interface ColumnHeaderProps {
-    title: string
+    title: string,
+    column: DragColumn
 }
 
-export const ColumnHeader: React.FC<ColumnHeaderProps> = ({ title }) => {
+export const ColumnHeader: React.FC<ColumnHeaderProps> = ({ title, column }) => {
     return (
         <div className="drag-column-header">
             <div>
                 <span>{(title || '').toLocaleUpperCase()}</span>
             </div>
             <div className="icon-group">
-                <ColumnCreateModel />
+                <ColumnCreateModel column={column} />
                 <ColumnWhisper />
             </div>
         </div>
@@ -69,7 +69,7 @@ export const Column: React.FC<ColumnProps> = ({ column, children }) => {
 
     return (
         <div className="drag-column" data-id={id} ref={ref}>
-            <ColumnHeader title={name} />
+            <ColumnHeader title={name} column={column} />
             <div className="drag-column-list">
                 {boxes.map((box, i) => {
                     const { id } = box;
