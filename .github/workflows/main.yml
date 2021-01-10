@@ -24,6 +24,9 @@ jobs:
       - name: set the config about environment
         run: npm install - g yarn
 
+      - name: run the install command
+        run: yarn
+
       - name: run the test-case command
         run: yarn run test
 
