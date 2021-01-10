@@ -35,7 +35,7 @@ export const ConfigurationInner: React.FC<ConfigurationProps> = () => {
     )
 }
 // TODO: DND 下面无法正常触发
-const Configuration: React.FC<ConfigurationProps> = ({ }) => {
+const Configuration: React.FC<ConfigurationProps> = () => {
     return (
         <Whisper placement='top' trigger="click" speaker={
             <Tooltip>

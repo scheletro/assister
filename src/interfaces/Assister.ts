@@ -1,4 +1,4 @@
-import { DragBox, DragColumn, DragType } from './Drag';
+import { DragBox, DragColumn } from './Drag';
 
 export const AssisterActionType = {
     ADD_COLUMN: 'ADD_COLUMN',
@@ -8,10 +8,12 @@ export const AssisterActionType = {
     SET_BOX_TO_COLUMN: 'SET_BOX_TO_COLUMN'
 }
 
-export type AssisterActionType = 'ADD_COLUMN' | 'ADD_BOX' | 'SET_TARGET_BOX' | 'SET_TARGET_COLUMN' | 'SET_BOX_TO_COLUMN';
+// TODO：todo item
+// @ts-ignore
+export type AssisterActionTypeEnum = 'ADD_COLUMN' | 'ADD_BOX' | 'SET_TARGET_BOX' | 'SET_TARGET_COLUMN' | 'SET_BOX_TO_COLUMN';
 
 export type AssisterAction = {
-    type: AssisterActionType,
+    type: AssisterActionTypeEnum,
     payload: DragColumn | DragBox,
 }
 
