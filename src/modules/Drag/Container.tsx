@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDrop, XYCoord } from 'react-dnd';
+import { useDrop } from 'react-dnd';
 
 import { useAssisterState } from '../../contexts/Assister';
 import { DragColumn, DragType } from '../../interfaces/Drag';

@@ -48,6 +48,7 @@ export const BoxFooter: React.FC<BoxFooterProps> = ({ timestamp }) => {
 
 export const Box: React.FC<BoxProps> = ({ box, children }) => {
     const { dispatch } = useAssisterState();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: DragType.BOX

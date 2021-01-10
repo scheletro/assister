@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { useDrag, useDrop, XYCoord } from 'react-dnd';
+import { useDrag, useDrop } from 'react-dnd';
 
 import { ColumnCreateModel } from './Column/ColumnModel';
 import { ColumnWhisper } from './Column/ColumnWhisper';
@@ -40,7 +40,7 @@ export const Column: React.FC<ColumnProps> = ({ column, children }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const { id, name, boxes, } = column;
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: DragType.COLUMN
@@ -72,7 +72,7 @@ export const Column: React.FC<ColumnProps> = ({ column, children }) => {
             <ColumnHeader title={name} column={column} />
             <div className="drag-column-list">
                 {boxes.map((box, i) => {
-                    const { id } = box;
+                    // const { id } = box;
                     return (<Box key={i} box={box} />);
                 })}
             </div>
